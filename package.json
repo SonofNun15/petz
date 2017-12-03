@@ -1,0 +1,31 @@
+{
+  "name": "pets",
+  "version": "1.0.0",
+  "description": "Fun console project for playing with ts-node",
+  "private": true,
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --harmony --require babel-register src/main.js",
+    "debug": "node debug --harmony --require babel-register src/main.js"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Josh Graber",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest-minimal": "^1.1.2",
+    "babel-register": "^6.26.0"
+  },
+  "dependencies": {
+    "thenify": "^3.3.0"
+  },
+  "babel": {
+    "presets": [
+      "latest-minimal"
+    ]
+  }
+}
