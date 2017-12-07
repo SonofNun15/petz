@@ -1,26 +1,37 @@
 import io from './io'
 import Pet from './models/pet'
+import actions from './actions'
 import { report, selectAction } from './reporters/text'
 
 async function run(pet) {
   let day = 1
+  let play = true
 
-  while (pet.continue) {
+  while (play) {
     report(pet, day)
 
     let action = null
 
     while (!action) {
       console.log(`What do you want to do with ${pet.name} today? `)
-      action = await selectAction(pet.actions)
+      action = await selectAction(actions)
 
       if (!action) {
-        console.log('You did not select an action! Try again.')
+        console.log('Are you sure you want to quit (y/n)? ')
+        let quit = await io.question(' > ')
+        quit = quit.toLowerCase()
+
+        if (quit == 'y') {
+          play = false
+          break
+        }
       }
     }
 
-    action.do()
-    day++
+    if (action) {
+      pet.do(action)
+      day++
+    }
   }
 
   report(pet, day)
