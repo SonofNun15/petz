@@ -3,8 +3,14 @@ import io from '../io'
 
 export function report(pet, day) {
   console.log(`***** DAY ${day} *****`)
-  console.log(`${pet.name} wakes up`)
+  if (pet.alive) {
+    console.log(`${pet.name} wakes up`)
+  } else {
+    console.log(`${pet.name} has died. :(`)
+  }
+
   const state = pet.state
+  console.log(`LEVEL = ${state.level}`)
   console.log(`happiness = ${state.happiness}`)
   console.log(`food = ${state.food}`)
   console.log(`energy = ${state.energy}`)

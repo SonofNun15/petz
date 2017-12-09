@@ -7,7 +7,7 @@ async function run(pet) {
   let day = 1
   let play = true
 
-  while (play) {
+  while (play && pet.alive) {
     report(pet, day)
 
     let action = null
@@ -30,6 +30,7 @@ async function run(pet) {
 
     if (action) {
       pet.do(action)
+      pet.age()
       day++
     }
   }

@@ -1,8 +1,10 @@
 import { decrease, increase } from '../services/levelAdjuster'
 
 class State {
-  constructor(state) {
+  constructor(state, adjustments) {
     if (!state) { state = start_state() }
+
+    Object.assign(state, adjustments)
 
     this.food = state.food
     this.energy = state.energy
@@ -15,53 +17,63 @@ class State {
   }
 
   increaseHealth(min, max) {
-    this.health = increase(this.health, 12, min, max)
-    return this
+    return new State(this, { health: increase(this.health, 12, min, max) })
   }
 
-  descreaseHealth(min, max) {
-    this.health = decrease(this.health, min, max)
-    return this
+  decreaseHealth(min, max) {
+    return new State(this, { health: decrease(this.health, min, max) })
   }
 
   increaseHappiness(min, max) {
-    this.happiness = increase(this.happiness, 15, min, max)
-    return this
+    return new State(this, { happiness: increase(this.happiness, 15, min, max) })
   }
 
   decreaseHappiness(min, max) {
-    this.happiness = decrease(this.happiness, min, max)
-    return this
+    return new State(this, { happiness: decrease(this.happiness, min, max) })
   }
 
   increaseFood(min, max) {
-    this.food = increase(this.food, 15, min, max)
-    return this
+    return new State(this, { food: increase(this.food, 15, min, max) })
   }
 
-  descreaseFood(min, max) {
-    this.food = decrease(this.food, min, max)
-    return this
+  decreaseFood(min, max) {
+    return new State(this, { food: decrease(this.food, min, max) })
   }
 
   increaseEnergy(min, max) {
-    this.energy = increase(this.energy, 15, min, max)
-    return this
+    return new State(this, { energy: increase(this.energy, 15, min, max) })
   }
 
   decreaseEnergy(min, max) {
-    this.energy = decrease(this.energy, min, max)
-    return this
+    return new State(this, { energy: decrease(this.energy, min, max) })
+  }
+
+  increaseWeight(min, max) {
+    return new State(this, { weight: increase(this.weight, 15, min, max) })
+  }
+
+  decreaseWeight(min, max) {
+    return new State(this, { weight: decrease(this.weight, min, max) })
+  }
+
+  adjustWeight(amount) {
+    return new State(this, { weight: amount })
   }
 
   increaseExperience(min, max) {
-    this.experience = increase(this.experience, Number.POSITIVE_INFINITY, min, max)
-    return this
+    return new State(this, {
+      experience: increase(this.experience, Number.POSITIVE_INFINITY, min, max)
+    })
   }
 
   decreaseExperience(min, max) {
-    this.experience = decrease(this.experience, min, max)
-    return this
+    return new State(this, {
+      experience: decrease(this.experience, min, max)
+    })
+  }
+
+  currentLevel(level) {
+    return new State(this, { level: Math.max(this.level, level) })
   }
 }
 
