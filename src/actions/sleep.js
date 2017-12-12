@@ -1,7 +1,7 @@
 const sleep = {
   description: 'sleep',
   do: function(state) {
-    return state.increaseEnergy(3, 6)
+    return state.increaseEnergy(4, 6)
   },
 }
 

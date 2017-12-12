@@ -1,7 +1,7 @@
 const feed = {
   description: 'feed',
   do: function(state) {
-    return state.increaseFood(3, 5)
+    return state.increaseFood(4, 6)
   },
 }
 

@@ -5,16 +5,15 @@ const maxHealthyWeight = 12
 const metabolism  = {
   description: 'metabolism ',
   do: function(state) {
-    let changedState = state.decreaseFood(1, 3)
-    changedState = changedState.adjustWeight(weightEffect(changedState))
-
-    return changedState.decreaseHealth(healthEffect(changedState))
+    let changedState = state.decreaseHealth(healthEffect(state))
+    changedState = changedState.decreaseFood(1, 3)
+    return changedState.adjustWeight(weightEffect(changedState))
   }
 }
 
 function weightEffect(state) {
   return Math.floor(
-    Math.max(0, minHealthyFood - state.food) / 2
+    Math.max(0, state.food - minHealthyFood) / 2
   )
 }
 

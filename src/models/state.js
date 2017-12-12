@@ -57,7 +57,7 @@ class State {
   }
 
   adjustWeight(amount) {
-    return new State(this, { weight: amount })
+    return new State(this, { weight: this.weight + amount })
   }
 
   increaseExperience(min, max) {
@@ -79,12 +79,12 @@ class State {
 
 function start_state() {
   return {
-    food: 5,
-    energy: 5,
-    happiness: 5,
-    experience: 5,
-    health: 5,
-    weight: 5,
+    food: 8,
+    energy: 8,
+    happiness: 8,
+    experience: 1,
+    health: 8,
+    weight: 8,
     level: 1,
   }
 }

@@ -1,8 +1,8 @@
 const play = {
   description: 'play',
   do: function(state) {
-    return state.increaseHappiness(2, 5)
-                .decreaseEnergy(1, 4)
+    return state.increaseHappiness(3, 5)
+                .decreaseEnergy(1, 3)
   },
 }
 

@@ -3,13 +3,16 @@ import random from '../services/randomizer'
 const illness  = {
   description: 'illness ',
   do: function(state) {
-    const illness = random(1, 5)
-    const illnessEffect = illness > 3
-      ? illness - 1
-      : 0
+    if (getsIll()) {
+      return state.decreaseHealth(random(1, 3))
+    }
 
-    return state.decreaseHealth(illnessEffect)
+    return state
   }
+}
+
+function getsIll() {
+  return random(1, 5) == 1
 }
 
 export default illness

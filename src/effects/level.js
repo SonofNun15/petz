@@ -6,8 +6,13 @@ const level = {
     petValue += state.happiness * 2
     petValue += Math.min(state.energy, 10)
     petValue += Math.min(state.food, 10)
-    const baseLine = petValue - 35
-    const level = Math.floor(Math.sqrt(petValue))
+
+    const baseline = petValue - 23
+    if (baseline <= 0) {
+      return state
+    }
+
+    const level = Math.floor(Math.sqrt(baseline))
     return state.currentLevel(level)
   }
 }
