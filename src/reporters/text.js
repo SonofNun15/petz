@@ -47,7 +47,7 @@ function reportEnergy(name, energy) {
 
 function reportHealth(name, health) {
   if (health < 5) {
-    console.log(`${name} is sick! 8-O`)
+    console.log(`${name} is sick! :O`)
   }
 }
 
